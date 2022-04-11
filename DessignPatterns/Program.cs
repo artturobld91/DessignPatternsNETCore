@@ -5,6 +5,7 @@ using DesignPatterns.Prototype;
 using System;
 using System.Threading;
 using DesignPatterns.Factory;
+using DesignPatterns.Adapter;
 
 namespace DesignPatterns
 {
@@ -25,6 +26,9 @@ namespace DesignPatterns
 
             //Factory
             Factory();
+
+            //Adapter
+            Adapter();
         }
 
         #region Prototype
@@ -155,6 +159,23 @@ namespace DesignPatterns
             Console.WriteLine("Client: I'm not aware of the factory's class," +
                 "but it still works.\n" + factory.SomeOperation());
             // ...
+        }
+
+        #endregion
+
+        #region Adapter
+
+        public static void Adapter()
+        {
+            Console.WriteLine("----------------------------- Adapter -----------------------------");
+            Adaptee adaptee = new Adaptee();
+            ITarget target = new DesignPatterns.Adapter.Adapter(adaptee);
+
+            Console.WriteLine("Adaptee interface is incompatible with the client.");
+            Console.WriteLine("But with adapter client can call it's method.");
+
+            Console.WriteLine(target.GetRequest());
+            Console.WriteLine("----------------------------- Adapter -----------------------------");
         }
 
         #endregion

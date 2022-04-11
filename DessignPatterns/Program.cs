@@ -1,6 +1,7 @@
 ﻿using DesignPatterns.Builder;
 using DesignPatterns.Singleton.SingletonBasic;
 using DesignPatterns.Singleton.SingletonThread;
+using DesignPatterns.Prototype;
 using System;
 using System.Threading;
 
@@ -10,6 +11,9 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
+            //Prototype
+            Prototype();
+
             //Singleton Basic
             Singleton_Basic();
             //Singleton Threaded
@@ -18,6 +22,18 @@ namespace DesignPatterns
             //Builder
             Builder();
         }
+
+        #region Prototype
+
+        public static void Prototype()
+        {
+            Console.WriteLine("----------------------------- Prototype -----------------------------");
+            DesignPatterns.Prototype.Prototype prototype = new DesignPatterns.Prototype.Prototype();
+            prototype.PrototypePattern();
+            Console.WriteLine("----------------------------- Prototype -----------------------------");
+        }
+
+        #endregion
 
         #region Singleton Basic
 

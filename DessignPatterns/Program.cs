@@ -4,6 +4,7 @@ using DesignPatterns.Singleton.SingletonThread;
 using DesignPatterns.Prototype;
 using System;
 using System.Threading;
+using DesignPatterns.Factory;
 
 namespace DesignPatterns
 {
@@ -21,6 +22,9 @@ namespace DesignPatterns
 
             //Builder
             Builder();
+
+            //Factory
+            Factory();
         }
 
         #region Prototype
@@ -122,6 +126,35 @@ namespace DesignPatterns
             builder.BuildPartC();
             Console.Write(builder.GetProduct().ListParts());
             Console.WriteLine("----------------------------- Builder -----------------------------");
+        }
+
+        #endregion
+
+        #region Factory
+
+        public static void Factory()
+        {
+            Console.WriteLine("----------------------------- Factory -----------------------------");
+            Console.WriteLine("App: Launched with the FactoryCreatorA.");
+            ClientCode(new FactoryCreatorA());
+
+            Console.WriteLine("");
+
+            Console.WriteLine("App: Launched with the FactoryCreatorB.");
+            ClientCode(new FactoryCreatorB());
+            Console.WriteLine("----------------------------- Factory -----------------------------");
+        }
+
+        // The client code works with an instance of a concrete creator, albeit
+        // through its base interface. As long as the client keeps working with
+        // the creator via the base interface, you can pass it any creator's
+        // subclass.
+        public static void ClientCode(DesignPatterns.Factory.Factory factory)
+        {
+            // ...
+            Console.WriteLine("Client: I'm not aware of the factory's class," +
+                "but it still works.\n" + factory.SomeOperation());
+            // ...
         }
 
         #endregion

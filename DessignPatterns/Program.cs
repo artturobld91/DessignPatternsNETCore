@@ -6,6 +6,7 @@ using System;
 using System.Threading;
 using DesignPatterns.Factory;
 using DesignPatterns.Adapter;
+using DesignPatterns.Proxy;
 
 namespace DesignPatterns
 {
@@ -29,6 +30,9 @@ namespace DesignPatterns
 
             //Adapter
             Adapter();
+
+            //Proxy
+            Proxy();
         }
 
         #region Prototype
@@ -176,6 +180,27 @@ namespace DesignPatterns
 
             Console.WriteLine(target.GetRequest());
             Console.WriteLine("----------------------------- Adapter -----------------------------");
+        }
+
+        #endregion
+
+        #region Proxy
+
+        public static void Proxy()
+        {
+            Console.WriteLine("----------------------------- Proxy -----------------------------");
+            Client client = new Client();
+
+            Console.WriteLine("Client: Executing the client code with a real subject:");
+            RealSubject realSubject = new RealSubject();
+            client.ClientCode(realSubject);
+
+            Console.WriteLine();
+
+            Console.WriteLine("Client: Executing the same client code with a proxy:");
+            DesignPatterns.Proxy.Proxy proxy = new DesignPatterns.Proxy.Proxy(realSubject);
+            client.ClientCode(proxy);
+            Console.WriteLine("----------------------------- Proxy -----------------------------");
         }
 
         #endregion
